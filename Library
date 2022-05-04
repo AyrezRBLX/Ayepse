@@ -1,6 +1,0 @@
-local Library = require(game:GetService("ReplicatedStorage").Framework.Library)
-while not Library.Loaded do
-    game:GetService('RunService').Heartbeat:Wait()
-end
-
-return Library

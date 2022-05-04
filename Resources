@@ -1,0 +1,13 @@
+local Library = require(game:GetService("ReplicatedStorage").Framework.Library)
+while not Library.Loaded do
+    game:GetService('RunService').Heartbeat:Wait()
+end
+
+local Resources = {}
+Resources.Library = Library
+
+local Button = game:GetService('StarterGui').Main.Left.Tools.AutoSettings
+local Entry = Button:Clone()
+Entry.Name = 'Ayepse'
+Entry.Thumbnail.Image = 'rbxassetid://' .. 2093843501
+Entry.Parent = Button.Parent
