@@ -1,12 +1,36 @@
-local Library = require(game:GetService("ReplicatedStorage").Framework.Library)
+local Library = require(game:GetService('ReplicatedStorage').Framework.Library)
 while not Library.Loaded do
     game:GetService('RunService').Heartbeat:Wait()
 end
 
+local __Name = 'Ayepse'
+Library.Functions.SearchArray = function() return true end
+
+local Global = false
 local Resources = {}
+Resources.LocalPlayer = Library.LocalPlayer
 Resources.Library = Library
 
-local Entry = game:GetService('StarterGui').Main.Left.Tools.AutoSettings:Clone()
-Entry.Name = 'Ayepse'
-Entry.Thumbnail.Image = 'rbxassetid://' .. 2093843501
-Entry.Parent = Library.PlayerGui
+local PlayerGui = Resources.LocalPlayer.PlayerGui
+
+local Ayepse = game:GetService('StarterGui').AutoSettings:Clone()
+Ayepse.Name = __Name
+Ayepse.Parent = PlayerGui
+
+local Button = game:GetService('StarterGui').Main.Left.Tools.AutoSettings:Clone()
+Button.Name = 'Ayepse'
+Button.Thumbnail.Image = 'rbxassetid://' .. 8343895261
+Button.Parent = PlayerGui.Main.Left.Tools
+
+Library.GUIFX.ButtonFX(Button)
+Library.GUIFX.Tooltip(Button,'Ayepse')
+
+Button.Activated:Connect(function()
+    if not Global then
+        Global = true
+        Library.GUI.Ayepse.Gui.Enabled = not Library.GUI.Ayepse.Gui.Enabled
+        Global = false
+    end
+end)
+
+Library.Signal.Fire('Notification','Ayepse Sucessfully Injected!',{color = Color3.fromRGB(255,255,255)})
